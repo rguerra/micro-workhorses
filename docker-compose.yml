@@ -8,12 +8,12 @@ services:
      - "4000:27017"
     restart: always
 
-  azure-storage:
-    image: azure-storage
+  do-storage:
+    image: do-storage
     build: 
-      context: ./azure-storage
+      context: ./do-storage
       dockerfile: Dockerfile
-    container_name: video-storage
+    container_name: do-storage
     ports:
      - "4001:80"
     environment:
@@ -22,12 +22,12 @@ services:
       - STORAGE_ACCESS_KEY=<insert your Azure storage account access key here>
     restart: "no"
 
-  video-streaming:
-    image: video-streaming
+  node-helloworld:
+    image: node-helloworld
     build: 
-      context: ./video-streaming
+      context: ./node-helloworld
       dockerfile: Dockerfile
-    container_name: video-streaming
+    container_name: node-helloworld
     ports:
      - "4002:80"
     environment:
