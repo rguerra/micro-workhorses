@@ -1,7 +1,6 @@
 {
   "name": "node-helloworld",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js"
@@ -11,5 +10,6 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1"
-  }
+  },
+  "description": ""
 }
