@@ -3,6 +3,7 @@ const aws = require('aws-sdk');
 const express = require('express');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
+var path = require('path');
 
 const app = express();
 
@@ -30,15 +31,18 @@ app.use(express.static('public'));
 
 // Main, error and success views
 app.get('/', function (request, response) {
-  response.sendFile(__dirname + '/public/index.html');
+  //response.sendFile(__dirname + '/../public/index.html');
+  response.sendFile(path.resolve("public/index.html"));
 });
 
 app.get("/success", function (request, response) {
-  response.sendFile(__dirname + '/public/success.html');
+ //response.sendFile(__dirname + '/../public/success.html');
+  response.sendFile(path.resolve("public/success.html"));
 });
 
 app.get("/error", function (request, response) {
-  response.sendFile(__dirname + '/public/error.html');
+  //response.sendFile(__dirname + '/../public/error.html');
+  response.sendFile(path.resolve("public/error.html"));
 });
 
 app.post('/upload', function (request, response, next) {
