@@ -17,7 +17,7 @@ const s3 = new aws.S3({
 const upload = multer({
   storage: multerS3({
     s3: s3,
-    bucket: 'microhorses-spaces.nyc3.digitaloceanspaces.com',
+    bucket: 'cli-storage/storage',
     acl: 'public-read',
     key: function (request, file, cb) {
       console.log(file);
@@ -56,6 +56,6 @@ app.post('/upload', function (request, response, next) {
   });
 });
 
-app.listen(3001, function () {
-  console.log('Server listening on port 3001.');
+app.listen(3002, function () {
+  console.log('Server listening on port 3002.');
 });
