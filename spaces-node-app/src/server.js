@@ -7,6 +7,18 @@ var path = require('path');
 
 const app = express();
 
+//
+// Throws an error if the PORT environment variable is missing.
+//
+if (!process.env.PORT) {
+    throw new Error("Please specify the port number for the HTTP server with the environment variable PORT.");
+}
+
+//
+// Extracts the PORT environment variable.
+//
+const PORT = process.env.PORT;
+
 // Set S3 endpoint to DigitalOcean Spaces
 const spacesEndpoint = new aws.Endpoint('nyc3.digitaloceanspaces.com');
 const s3 = new aws.S3({
@@ -56,6 +68,9 @@ app.post('/upload', function (request, response, next) {
   });
 });
 
-app.listen(3002, function () {
-  console.log('Server listening on port 3002.');
+//
+// Starts the HTTP server.
+//
+app.listen(PORT, () => {
+    console.log(`Microservice listening on port ${PORT}`);
 });
