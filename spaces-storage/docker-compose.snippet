@@ -1,12 +1,13 @@
 
-  spaces-node-app:
-    image: spaces-node-app
+  spaces-storage:
+    image: spaces-storage
     build: 
-      context: ./spaces-node-app
+      context: ./spaces-storage
       dockerfile: Dockerfile
-    container_name: spaces-node-app
+    container_name: video-storage
     ports:
      - "4000:80"
     environment:
       - PORT=80
     restart: "no"
+
