@@ -2,12 +2,18 @@
 // Load dependencies
 const aws = require('aws-sdk');
 const express = require('express');
-const multer = require('multer');
-const multerS3 = require('multer-s3');
 
+const spacesEndpoint =
 //const azure = require('azure-storage');
 
 const app = express();
+
+// Set S3 endpoint to DigitalOcean Spaces
+const spacesEndpoint = new aws.Endpoint('nyc3.digitaloceanspaces.com');
+const s3 = new aws.S3({
+  endpoint: spacesEndpoint
+});
+var downloader = require('s3-download')(s3client);
 
 //
 // Throws an error if the any required environment variables are missing.
@@ -29,6 +35,9 @@ console.log(`Serving videos from Spaces`);
 // Create the Blob service API to communicate with Azure storage.
 //
 //function createBlobService() {
+//
+//  REF. blobService https://azure.github.io/azure-storage-node/BlobService.html
+//
 //    const blobService = azure.createBlobService(STORAGE_ACCOUNT_NAME, STORAGE_ACCESS_KEY);
 //    // Uncomment next line for extra debug logging.
 //    //blobService.logger.level = azure.Logger.LogLevels.DEBUG; 
@@ -37,6 +46,19 @@ console.log(`Serving videos from Spaces`);
 
 function createBlobService() {
 	// TODO: Implement blobService with the aws library.
+	//
+	// REF. https://www.npmjs.com/package/s3-download
+	var params = {
+	    Bucket:"cli-storage/storage",   
+	    Key:"SampleVideo_1280x720_1mb.mp4"
+	}
+	var sessionParams = {
+		    maxPartSize: ,//default 20MB
+		    concurrentStreams: ,//default 5
+		    maxRetries: ,//default 3
+		    totalObjectSize: //required size of object being downloaded
+		}
+
 }
 //
 // Registers a HTTP GET route to retrieve videos from storage.
