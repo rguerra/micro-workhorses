@@ -1,6 +1,6 @@
 #! /bin/bash
 
-export PORT=3003
+export PORT=4000
 npm install
 npm run start:dev
 

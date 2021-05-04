@@ -28,26 +28,53 @@ const PORT = process.env.PORT
 console.log('Serving videos from Spaces')
 
 app.get('/video', (req, res) => {
-  const videoPath = req.query.path
-  const containerName = 'cli-storage'
-  // TODO: use videoPath and not the video name hardcoded.
-  console.log(`Streaming video from path ${videoPath}.`)
-  const params = {
+  if(!req.query.path){
+	res.status(500).send('No filepath')
+  }else{
+
+	  const videoPath = req.query.path
+	  const containerName = 'cli-storage'
+	  // TODO: use videoPath and not the video name hardcoded.
+	  console.log(`Streaming video from path ${videoPath}.`)
+	  const params = {
 	    Bucket: `${containerName}/storage`,
-	    Key: 'SampleVideo_1280x720_1mb.mp4'
+	    Key: `${videoPath}`
+	    //Key: 'SampleVideo_1280x720_1mb.mp4'
+	  }
+	  const readStream = s3.getObject(params).createReadStream()
+	  // When the stream is done bien read, end the response
+	  readStream.on('close', () => {
+	    res.end()
+	  })
+	  //
+	  // Writes HTTP headers to the response.
+	  //
+	  // res.writeHead(200, {
+	  //    "Content-Length": properties.contentLength,
+	  //    "Content-Type": "video/mp4",
+	  // });
+	  readStream.pipe(res)
+  }
+})
+
+
+
+app.get("/", (req, res) => {
+    res.send("Not IMPLEMENTED!");
+});
+app.get('/data', (req, res) => {
+  const dataPath = req.query.path
+  const containerName = 'cli-storage'
+  console.log(`Streaming data from path ${dataPath}.`)
+  const params = {
+	    Bucket: `${containerName}/data`,
+	    Key: `${dataPath}`
   }
   const readStream = s3.getObject(params).createReadStream()
   // When the stream is done bien read, end the response
   readStream.on('close', () => {
     res.end()
   })
-  //
-  // Writes HTTP headers to the response.
-  //
-  // res.writeHead(200, {
-  //    "Content-Length": properties.contentLength,
-  //    "Content-Type": "video/mp4",
-  // });
   readStream.pipe(res)
 })
 //
