@@ -1,0 +1,11 @@
+
+  data-db:
+    image: data-db
+    #image: mongo:4.2.8
+    build: 
+      context: ./data-db
+      dockerfile: Dockerfile
+    container_name: data-db
+    ports:
+     - "4000:27017"
+    restart: always

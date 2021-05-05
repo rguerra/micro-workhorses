@@ -6,9 +6,13 @@
       dockerfile: Dockerfile
     container_name: video-streaming
     ports:
-     - "4001:80"
+     - "4002:80"
     environment:
       - PORT=80
       - VIDEO_STORAGE_HOST=spaces-storage
       - VIDEO_STORAGE_PORT=4000
+      - DBHOST=mongodb://db:27017
+      - DBNAME=video-streaming
+    depends_on:
+      - data-db
     restart: "no"
