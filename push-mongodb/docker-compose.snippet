@@ -1,9 +1,9 @@
 
-  data-mongodb:
+  data-db:
     image: data-mongodb
     #image: mongo:4.2.8
     build: 
-      context: ./data-mongodb
+      context: ./data-db
       dockerfile: Dockerfile
     container_name: data-mongodb
     ports:

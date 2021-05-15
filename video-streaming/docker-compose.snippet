@@ -1,5 +1,4 @@
-
-  video-streaming:
+video-streaming:
     image: video-streaming
     build: 
       context: ./video-streaming
@@ -14,5 +13,5 @@
       - DBHOST=mongodb://db:27017
       - DBNAME=video-streaming
     depends_on:
-      - video-db
+      - data-mongodb
     restart: "no"

@@ -1,11 +1,8 @@
 
-  data-db:
+  video-db:
     image: video-db
-    #image: mongo:4.2.8
     build: 
       context: ./video-db
       dockerfile: Dockerfile
     container_name: video-db
-    ports:
-     - "4000:27017"
-    restart: always
+    restart: 'no'
