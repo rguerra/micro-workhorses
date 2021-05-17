@@ -9,4 +9,6 @@
      - "4002:80"
     environment:
       - PORT=80
+    links:
+      - data-mongodb
     restart: "no"
