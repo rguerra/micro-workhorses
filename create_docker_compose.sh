@@ -35,3 +35,4 @@ done
 
 #echo "$docker_compose_string" >> "docker-compose.yaml"
 echo "$docker_compose_string" > "docker-compose.yaml"
+chown -R $USER docker-compose.yaml

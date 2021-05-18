@@ -1,4 +1,4 @@
-FROM mongo:4.2.8
+FROM mongo:3.2.11
 
 COPY ./mongodb_shell.sh ./mongodb_shell.sh
 
