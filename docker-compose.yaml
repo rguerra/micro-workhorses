@@ -1,0 +1,26 @@
+
+version: '3'
+services: 
+
+  
+  video-db:
+    image: video-db
+    build: 
+      context: ./video-db
+      dockerfile: Dockerfile
+    container_name: video-db
+    environment:
+      - PORT=5000
+    restart: 'no'
+  
+  data-mongodb:
+    image: data-mongodb
+    #image: mongo:4.2.8
+    build: 
+      context: ./data-mongodb
+      dockerfile: Dockerfile
+    container_name: data-mongodb
+    expose:
+     - 27017
+     - 30000
+    restart: always

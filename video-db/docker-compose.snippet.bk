@@ -5,6 +5,10 @@
       context: ./video-db
       dockerfile: Dockerfile
     container_name: video-db
+    ports:
+     - "4002:80"
     environment:
-      - PORT=5000
-    restart: 'no'
+      - PORT=80
+    links:
+      - data-mongodb
+    restart: "no"

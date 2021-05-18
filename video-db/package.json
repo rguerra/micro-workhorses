@@ -1,28 +1,20 @@
 {
-  "name": "chapter-3",
+  "name": "video-db",
   "version": "1.0.0",
-  "description": "Code listings and examples for Chapter 3 of JavaScript Data Wrangling.",
-  "main": "",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://ashleydavis@github.com/JavaScript-Data-Wrangling/Chapter-3.git"
-  },
-  "author": "ashley@codecapers.com.au",
+  "keywords": [],
+  "author": "",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/JavaScript-Data-Wrangling/Chapter-3/issues"
-  },
-  "homepage": "https://github.com/JavaScript-Data-Wrangling/Chapter-3#readme",
   "dependencies": {
     "express": "^4.17.1",
     "nodejs-mysql": "0.1.3",
     "papaparse": "4.3.3",
     "promised-mongo": "1.2.0",
     "request": "2.81.0",
-    "request-promise": "4.2.1",
-    "vagrant": "file:mongodb"
-  }
+    "request-promise": "4.2.1"
+  },
+  "description": ""
 }
