@@ -15,8 +15,6 @@ importCsvFile("./data/earthquakes.csv")
         console.error(err.stack);
     });
 
-
-
 const express = require("express");
 
 const app = express();
