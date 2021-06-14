@@ -25,7 +25,7 @@ if (!process.env.VIDEO_STORAGE_PORT) {
 const PORT = process.env.PORT;
 const VIDEO_STORAGE_HOST = process.env.VIDEO_STORAGE_HOST;
 const VIDEO_STORAGE_PORT = parseInt(process.env.VIDEO_STORAGE_PORT);
-console.log(`Forwarding video requests to ${VIDEO_STORAGE_HOST}:${VIDEO_STORAGE_PORT}.`);
+console.log(`Forwarding video requests to ${VIDEO_STORAGE_HOST}:${VIDEO_STORAGE_PORT}`);
 
 app.get("/", (req, res) => {
     res.send("Not IMPLEMENTED!");
@@ -44,12 +44,21 @@ app.get("/video", (req, res) => {
             headers: req.headers
         }, 
         forwardResponse => {
-            res.writeHeader(forwardResponse.statusCode, forwardResponse.headers);
-            forwardResponse.pipe(res);
+                res.writeHeader(forwardResponse.statusCode, forwardResponse.headers);
+                forwardResponse.pipe(res);
         }
+//        (err, response, body)  => {
+//            if(err){
+//                console.log(err);
+//            } else if(response.statusCode === 200){
+//                res.writeHeader(response.statusCode, response.headers);
+//                response.pipe(res);
+//            } else{
+//                console.log(response.statusCode);
+//            }
+//        }
     );
-    
-    req.pipe(forwardRequest);
+    req.pipe(forwardRequest)
 });
 
 //

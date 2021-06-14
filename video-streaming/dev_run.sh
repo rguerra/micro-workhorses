@@ -1,8 +1,8 @@
 #! /bin/bash
 
 export VIDEO_STORAGE_HOST=spaces-storage
-export VIDEO_STORAGE_PORT=3003
-export PORT=3000
+export VIDEO_STORAGE_PORT=4000
+export PORT=4001
 npm install
 #node src/server.js
 #npm start
