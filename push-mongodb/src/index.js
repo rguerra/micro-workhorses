@@ -4,10 +4,13 @@ const importCsvFile = require('./toolkit/importCsvFile.js');
 const exportToMongoDB = require('./toolkit/exportToMongoDB.js');
 const mongo = require('promised-mongo');
 
-const db = mongo("data-mongodb:27017/earthquakes", ["largest_earthquakes_export"]);
+//const db = mongo("data-mongodb:27017/earthquakes", ["largest_earthquakes_export"]);
+const db = mongo(`data-mongodb:27017/${process.env.DB}`, [`${process.env.COLLECTION}`]);
 
-importCsvFile("./data/earthquakes.csv")
-    .then(data => exportToMongoDB(db, "largest_earthquakes_export", data))
+//importCsvFile("./data/earthquakes.csv")
+importCsvFile(`./data/${process.env.DB}.csv`)
+    //.then(data => exportToMongoDB(db, "largest_earthquakes_export", data))
+    .then(data => exportToMongoDB(db, `${process.env.COLLECTION}`, data))
     .then(() => db.close())
     .catch(err => {
         console.error("An error occurred.");

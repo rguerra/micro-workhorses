@@ -14,6 +14,7 @@ COPY ./toolkit ./toolkit
 COPY package*.json ./
 #COPY *.json ./
 COPY *.js ./
+COPY *.sh ./
 RUN npm install 
 #RUN npm install --only=production
 COPY ./src ./src
