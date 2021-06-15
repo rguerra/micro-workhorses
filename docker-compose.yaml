@@ -3,6 +3,18 @@ version: '3'
 services: 
 
   
+  data-mongodb:
+    image: data-mongodb
+    #image: mongo:4.2.8
+    build: 
+      context: ./data-mongodb
+      dockerfile: Dockerfile
+    container_name: data-mongodb
+    expose:
+     - 27017
+     - 30000
+    restart: always
+  
   push-mongodb:
     image: push-mongodb
     build: 
@@ -14,16 +26,4 @@ services:
     environment:
       - DB=earthquakes
       - COLLECTION=largest_earthquakes_export
-    restart: always
-  
-  data-mongodb:
-    image: data-mongodb
-    #image: mongo:4.2.8
-    build: 
-      context: ./data-mongodb
-      dockerfile: Dockerfile
-    container_name: data-mongodb
-    expose:
-     - 27017
-     - 30000
     restart: always

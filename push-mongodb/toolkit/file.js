@@ -5,6 +5,32 @@
 //
 
 const fs = require('fs');
+const readline = require('readline');
+const EJSON = require('mongodb-extjson')
+
+//
+// Read a text file line by line form the file system.
+// This method is very innefficient a better way would be to read line by line from file and not to load all of the lines into memory.
+//
+function readJsonLines (fileName) {
+    let lines = [];
+    let rd = readline.createInterface({
+        input: fs.createReadStream(fileName),
+        crlfDelay: Infinity
+    });
+    return new Promise((resolve, reject) => {
+        rd.on('line', function(line){
+            lines.push(EJSON.parse(line))
+        });
+        rd.on('close', function(){
+            resolve(lines);
+        });
+        rd.on('error', function(err){
+            reject(err);
+        });
+
+    });
+};
 
 //
 // Read a text file form the file system.
@@ -45,4 +71,5 @@ function write (fileName, textFileData) {
 module.exports = {
 	read: read,
 	write: write,
+    readJsonLines: readJsonLines,
 };

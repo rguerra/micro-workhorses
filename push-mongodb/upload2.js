@@ -1,16 +1,20 @@
 "use strict";
 
-const importJsonFile = require('./toolkit/importJsonFile.js');
-const exportToMongoDB = require('./toolkit/exportToMongoDB.js');
+const importJsonlFile = require('./toolkit/importJsonlFile.js');
 const mongo = require('promised-mongo');
 
 const db = mongo("data-mongodb:27017/video-streaming", ["videos"]);
+//const db = mongo("localhost:30000/video-streaming", ["videos"]);
 
-importJsonFile("./data/video-streaming.json")
-    .then(data => exportToMongoDB(db, "videos", data))
+importJsonlFile("./data/video-streaming.jsonl")
+    .then(lines => {
+        for(var i=0; i < lines.length; i++){
+            console.log(lines[i]);
+            db["videos"].insert(lines[i]);
+        }
+    })
     .then(() => db.close())
     .catch(err => {
         console.error("An error occurred.");
         console.error(err.stack);
     });
-
