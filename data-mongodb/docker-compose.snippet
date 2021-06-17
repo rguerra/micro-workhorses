@@ -6,7 +6,8 @@
       context: ./data-mongodb
       dockerfile: Dockerfile
     container_name: data-mongodb
+    ports:
+     - 27017:27017
     expose:
      - 27017
-     - 30000
     restart: always

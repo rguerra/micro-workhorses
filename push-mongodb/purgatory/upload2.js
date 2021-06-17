@@ -3,10 +3,11 @@
 const importJsonlFile = require('./toolkit/importJsonlFile.js');
 const mongo = require('promised-mongo');
 
-const db = mongo("data-mongodb:27017/video-streaming", ["videos"]);
-//const db = mongo("localhost:30000/video-streaming", ["videos"]);
+//const db = mongo("data-mongodb:27017/video-streaming", ["videos"]);
+const db = mongo("127.0.0.1:30000/video-streaming", ["videos"]);
 
-importJsonlFile("./data/video-streaming.jsonl")
+//importJsonlFile("./data/video-streaming.jsonl")
+importJsonlFile("./data/foobar.jsonl")
     .then(lines => {
         for(var i=0; i < lines.length; i++){
             console.log(lines[i]);
