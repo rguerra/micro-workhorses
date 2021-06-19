@@ -32,9 +32,9 @@ promise.then(
     });
 
 // SYNC
-( async() => {
-    const meta = await promise;
-    console.log( meta );
-})();
+//( async() => {
+//    const meta = await promise;
+//    console.log( meta );
+//})();
 
 

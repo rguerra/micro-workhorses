@@ -20,7 +20,8 @@ function readJsonLines (fileName) {
     });
     return new Promise((resolve, reject) => {
         rd.on('line', function(line){
-            lines.push(EJSON.parse(line))
+           // lines.push(EJSON.parse(line))
+           lines.push(JSON.parse(line))
         });
         rd.on('close', function(){
             resolve(lines);
