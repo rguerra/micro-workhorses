@@ -1,8 +1,18 @@
 FROM node:12.18.1
 #FROM node:12.18.1-alpine
+ENV PORT=-1
+ENV VIDEO_STORAGE_HOST=spaces-storage
+ENV VIDEO_STORAGE_PORT=80
+ENV DBHOST=mongodb://data-mongodb:27017
+ENV DBNAME=video-streaming
 
+RUN apt-get update && \
+	apt-get install -y --no-install-recommends \
+	neovim \
+	mongodb
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm install --only=production
+#RUN npm install --only=production
+RUN npm install
 COPY ./src ./src
 CMD npm start
