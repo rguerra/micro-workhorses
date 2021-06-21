@@ -6,7 +6,7 @@
 
 const fs = require('fs');
 const readline = require('readline');
-const EJSON = require('mongodb-extjson')
+//const EJSON = require('mongodb-extjson')
 
 //
 // Read a text file line by line form the file system.
@@ -21,7 +21,9 @@ function readJsonLines (fileName) {
     return new Promise((resolve, reject) => {
         rd.on('line', function(line){
            // lines.push(EJSON.parse(line))
-           lines.push(JSON.parse(line))
+           //lines.push(JSON.parse(line))
+            // TODO: Instead of pushing lines to a list can we stream them?
+            lines.push(line)
         });
         rd.on('close', function(){
             resolve(lines);

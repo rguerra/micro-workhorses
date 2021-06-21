@@ -18,7 +18,7 @@ function readJsonLines (fileName) {
     });
     return new Promise((resolve, reject) => {
         rd.on('line', function(line){
-           //lines.push(EJSON.parse(line))
+           // lines.push(EJSON.parse(line))
            lines.push(JSON.parse(line))
         });
         rd.on('close', function(){
@@ -30,16 +30,32 @@ function readJsonLines (fileName) {
     });
 };
 
+
+//
+// Helper function to import a JSON file.
+//
+function importJsonlFile (filePath) {
+	//return file.readJsonLines(filePath)
+	return readJsonLines(filePath)
+		.then(lines => {
+			return lines;
+		});
+};
+
+//const db = mongo("data-mongodb:27017/video-streaming", ["videos"]);
 const db = mongo("127.0.0.1:27017/video-streaming", ["videos"]);
-readJsonLines("data/foobar.jsonl")
-    .then(lines =>  db["videos"].insert(lines))
-    //.then(lines => {
-    //    const db = mongo("127.0.0.1:27017/video-streaming", ["videos"]);
-    //    console.log(lines);
-    //    db["videos"].insert(lines);
-    //    db.close();
-    //})
-    .then(async () => await db.close())
+
+//await importJsonlFile("./data/video-streaming.jsonl")
+importJsonlFile("./data/foobar.jsonl")
+    .then(lines => {
+        console.log(lines)
+        //db["videos"].insert(lines)
+        var nested_promise = db["videos"].insert(lines);
+        nested_promise.then( () => {
+            console.log('Done');
+        }).catch(({message}) => console.error(message))
+    })
+    //.then(() => db.close())
     .catch(err => {
         console.error("An error occurred.");
         console.error(err.stack);
