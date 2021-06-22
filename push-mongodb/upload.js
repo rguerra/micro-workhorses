@@ -30,7 +30,10 @@ function readJsonLines (fileName) {
     });
 };
 
-const db = mongo("127.0.0.1:27017/video-streaming", ["videos"]);
+// UNCOMMENT to run locally
+//const db = mongo("127.0.0.1:27017/video-streaming", ["videos"]);
+
+const db = mongo("data-mongodb:27017/video-streaming", ["videos"]);
 readJsonLines("data/foobar.jsonl")
     .then(lines =>  db["videos"].insert(lines))
     //.then(lines => {
