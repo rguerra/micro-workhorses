@@ -41,16 +41,20 @@ const DBNAME = process.env.DBNAME;
 console.log(`Forwarding video requests to ${VIDEO_STORAGE_HOST}:${VIDEO_STORAGE_PORT}.`);
 
 function main() {
+    console.log("Connection to DB: "+DBNAME);
     return mongodb.MongoClient.connect(DBHOST) // Connect to the database.
         .then(client => {
             const db = client.db(DBNAME);
+            console.log("Collection: videos");
             const videosCollection = db.collection("videos");
         
             app.get("/video", (req, res) => {
                 console.log("HTTP Request to /video");
                 console.log("param: "+req.query.id);
-                const videoId = new mongodb.ObjectID(req.query.id);
+                //const videoId = new mongodb.ObjectID(req.query.id);
+                const videoId = req.query.id;
                 console.log("video: "+videoId);
+                console.log("findOne({_id:"+videoId+"})");
                 videosCollection.findOne({ _id: videoId })
                     .then(videoRecord => {
                         console.log("videoRecord: "+videoRecord);
