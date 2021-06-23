@@ -27,7 +27,7 @@ services:
 for val in "${strarr[@]}";
 do
   printf "Processing $val\n"
-  file_content=`cat $val/docker-compose.snippet`
+  file_content=`cat $val/docker-compose.snippet-dev`
   docker_compose_string+='
   '"${file_content}"
 
