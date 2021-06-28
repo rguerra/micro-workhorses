@@ -1,5 +1,7 @@
+
 FROM node:12.18.1
-ENV PORT=3000
+#FROM node:12.18.1-alpine
+ENV PORT=80
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install --only=production

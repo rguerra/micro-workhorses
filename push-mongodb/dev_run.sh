@@ -7,5 +7,6 @@ npm install
 #node src/server.js
 #npm start
 #npx nodemon src/server.js
-node src/index.js
+#node src/index.js
+npm run start:dev
 

@@ -3,10 +3,14 @@
     image: spaces-node-app
     build: 
       context: ./spaces-node-app
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-dev
     container_name: spaces-node-app
     ports:
      - "4000:80"
     environment:
       - PORT=80
+      - NODE_ENV=development
+    volumes:
+        - /tmp/history/npm-cache:/root/.npm:z
+        - ./history/src:/usr/src/app/src:z
     restart: "no"

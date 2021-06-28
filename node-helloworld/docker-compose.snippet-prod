@@ -3,7 +3,7 @@
     image: node-helloworld
     build: 
       context: ./node-helloworld
-      dockerfile: Dockerfile-dev
+      dockerfile: Dockerfile-prod
     container_name: node-helloworld
     ports:
      - "4002:80"
@@ -12,5 +12,4 @@
         - ./node-helloworld/src:/usr/src/app/src:z
     environment:
       - PORT=80
-      - NODE_ENV=development
     restart: "no"

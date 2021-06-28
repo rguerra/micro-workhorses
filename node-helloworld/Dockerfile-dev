@@ -1,0 +1,8 @@
+FROM node:12.18.1
+#FROM node:12.18.1-alpine
+ENV PORT=80
+WORKDIR /usr/src/app
+COPY package*.json ./
+CMD npm config set cache-min 9999999 && \
+    npm install && \
+    npm run start:dev

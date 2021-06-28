@@ -10,12 +10,13 @@ RUN sudo apt-get install --force-yes -y nodejs
 RUN echo "NODE Version:" && node --version
 RUN echo "NPM Version: " && npm --version
 
-COPY ./data-fixtures ./data-fixtures
-COPY ./toolkit ./toolkit
-COPY package*.json ./
+WORKDIR /usr/src/app
+#COPY ./data-fixtures ./data-fixtures
+#COPY ./toolkit ./toolkit
+#COPY package*.json ./
 #COPY *.json ./
-COPY *.js ./
-COPY *.sh ./
+#COPY *.js ./
+#COPY *.sh ./
 
-RUN npm install 
-RUN node upload_fixtures.js
+#RUN npm install && \
+#    node upload_fixtures.js

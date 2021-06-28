@@ -3,16 +3,11 @@
     image: push-mongodb
     build: 
       context: ./push-mongodb
-      dockerfile: Dockerfile-dev
+      dockerfile: Dockerfile-prod
     container_name: push-mongodb
     ports:
      - "5000:80"
     environment:
       - DB=earthquakes
       - COLLECTION=largest_earthquakes_export
-      - NODE_ENV=development
-    volumes:
-        - /tmp/history/npm-cache:/root/.npm:z
-        - ./history/src:/usr/src/app/src:z
-    restart: no
-
+    restart: always
