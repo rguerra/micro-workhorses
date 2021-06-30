@@ -1,4 +1,4 @@
 #! /bin/bash
 
-export PORT=3000
+export PORT=5000
 npm run start:dev

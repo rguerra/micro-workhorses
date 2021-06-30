@@ -1,4 +1,4 @@
 
 #! /bin/bash
 
-docker build -t video-db -f Dockerfile-dev . --progress=plain
+docker build -t spaces-node-app -f Dockerfile-dev . --progress=plain

@@ -1,0 +1,22 @@
+FROM mongo:3.2.11
+
+RUN apt-get update \
+    && apt-get install -y \
+    curl \
+    sudo
+
+RUN curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+RUN sudo apt-get install --force-yes -y nodejs
+RUN echo "NODE Version:" && node --version
+RUN echo "NPM Version: " && npm --version
+
+WORKDIR /usr/src/app
+COPY ./data-fixtures ./data-fixtures
+COPY ./toolkit ./toolkit
+COPY package*.json ./
+COPY *.json ./
+COPY *.js ./
+COPY *.sh ./
+
+#RUN npm install && \
+#    node upload_fixtures.js

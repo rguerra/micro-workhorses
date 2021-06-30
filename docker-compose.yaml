@@ -3,16 +3,20 @@ version: '3'
 services: 
 
   
-  data-mongodb:
-    image: data-mongodb
+  spaces-node-app:
+    image: spaces-node-app
     build: 
-      context: ./data-mongodb
+      context: ./spaces-node-app
       dockerfile: Dockerfile-dev
-    container_name: data-mongodb
+    container_name: spaces-node-app
     ports:
-     - 27017:27017
+     - "3003:80"
+    environment:
+      - PORT=80
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - NODE_ENV=development
     volumes:
-        - ./data-mongodb:/usr/src/app:z
-    expose:
-     - 27017
-    restart: always
+        - /tmp/history/npm-cache:/root/.npm:z
+        - ./spaces-node-app:/usr/src/app:z
+    restart: "no"

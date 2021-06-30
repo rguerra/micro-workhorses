@@ -6,11 +6,13 @@
       dockerfile: Dockerfile-dev
     container_name: spaces-node-app
     ports:
-     - "4000:80"
+     - "3003:80"
     environment:
       - PORT=80
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - NODE_ENV=development
     volumes:
         - /tmp/history/npm-cache:/root/.npm:z
-        - ./history/src:/usr/src/app/src:z
+        - ./spaces-node-app:/usr/src/app:z
     restart: "no"
