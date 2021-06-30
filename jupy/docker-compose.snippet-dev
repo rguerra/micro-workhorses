@@ -1,0 +1,15 @@
+
+  jupy:
+    image: jupy
+    build: 
+      context: ./jupy
+      dockerfile: Dockerfile-dev
+    container_name: jupy
+    ports:
+     - "8885:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - ../jupy:/home/jovyan/work:z
+    restart: 'no'
+
