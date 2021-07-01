@@ -3,7 +3,7 @@
     image: spaces-storage
     build: 
       context: ./spaces-storage
-      dockerfile: Dockerfile-dev
+      dockerfile: Dockerfile-prod
     container_name: spaces-storage
     ports:
      - "4000:80"
@@ -11,9 +11,6 @@
       - PORT=80
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-    volumes:
-        - ./spaces-storage:/usr/src/app:z
-        - /tmp/history/npm-cache:/root/.npm:z
     restart: "no"
 
 

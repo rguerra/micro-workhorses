@@ -1,5 +1,6 @@
 FROM node:12.18.1
 #FROM node:12.18.1-alpine
+
 ENV PORT=-1
 ENV VIDEO_STORAGE_HOST=spaces-storage
 ENV VIDEO_STORAGE_PORT=80
@@ -11,8 +12,10 @@ RUN apt-get update && \
 	neovim \
 	mongodb
 WORKDIR /usr/src/app
-COPY package*.json ./
-#RUN npm install --only=production
-RUN npm install
-COPY ./src ./src
-CMD npm start
+
+#COPY package*.json ./
+#COPY ./src ./src
+
+CMD npm config set cache-min 9999999 && \
+    npm install && \
+    npm run start:dev
