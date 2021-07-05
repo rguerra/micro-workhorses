@@ -1,0 +1,21 @@
+  history:
+    image: history
+    build: 
+      context: ./history
+      dockerfile: Dockerfile-prod
+    container_name: history
+    volumes:
+      - /tmp/history/npm-cache:/root/.npm:z
+      - ./history/src:/usr/src/app/src:z
+    ports:
+     - "4002:80"
+    environment:
+      - PORT=80
+      - RABBIT=amqp://guest:guest@rabbit:5672
+      - DBHOST=mongodb://db:27017
+      - DBNAME=history
+      - NODE_ENV=development
+    #depends_on:
+    #  - db
+    #  - rabbit
+    restart: "no"
