@@ -1,9 +1,10 @@
-FROM node:12.18.1-alpine
 
+FROM node:12.18.1
+#FROM node:12.18.1-alpine
+
+ENV PORT=3003
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install --only=production
 COPY ./src ./src
-
-CMD npx wait-port rabbit:5672 && \
-    npm start
+CMD npm start

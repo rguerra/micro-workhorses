@@ -1,0 +1,20 @@
+
+version: '3'
+services: 
+
+  
+  d3_dev_environment:
+    image: d3_dev_environment
+    build: 
+      context: ./d3_dev_environment
+      dockerfile: Dockerfile-dev
+    container_name: d3_dev_environment
+    ports:
+     - "3003:80"
+    volumes:
+        - /tmp/history/npm-cache:/root/.npm:z
+        - ./d3_dev_environment:/usr/src/app:z
+    environment:
+      - PORT=80
+      - NODE_ENV=development
+    restart: "no"
