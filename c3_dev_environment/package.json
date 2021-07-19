@@ -1,0 +1,21 @@
+{
+  "name": "c3_dev_environment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.16.2",
+    "papaparse": "4.3.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

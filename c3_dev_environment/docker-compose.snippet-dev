@@ -1,0 +1,16 @@
+
+  c3_dev_environment:
+    image: c3_dev_environment
+    build: 
+      context: ./c3_dev_environment
+      dockerfile: Dockerfile-dev
+    container_name: c3_dev_environment
+    ports:
+     - "3003:80"
+    volumes:
+        - /tmp/history/npm-cache:/root/.npm:z
+        - ./c3_dev_environment:/usr/src/app:z
+    environment:
+      - PORT=80
+      - NODE_ENV=development
+    restart: "no"
