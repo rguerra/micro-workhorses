@@ -31,8 +31,9 @@ $(function () {
                 data: {
                     json: data,
                     keys: {
+                        x: "Year",
                         value: [
-                            "close"
+                            "AvgTemp"
                         ]
                     },
                     type: "line" // Set the type of the chart, 'line' is actually the default value so is unecessary in this case but I've added it so you know what you need to change when you change the chart type.
