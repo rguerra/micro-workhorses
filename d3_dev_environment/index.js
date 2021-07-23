@@ -25,14 +25,27 @@ const PORT = process.env.PORT;
 
 // Views in public directory
 app.use(express.static('public'));
+app.get('/', function (request, response) {
+    response.sendFile(path.resolve("public/index.html"));
+});
 
 // Main, error and success views
-app.get('/', function (request, response) {
-  //response.sendFile(__dirname + '/../public/index.html');
-  response.sendFile(path.resolve("public/index.html"));
+app.get('/example1', function (request, response) {
+    response.sendFile(path.resolve("public/examples-demo1.html"));
+});
+
+app.get('/example2', function (request, response) {
+    response.sendFile(path.resolve("public/examples-demo2.html"));
 });
 
 
+app.get('/example3', function (request, response) {
+    response.sendFile(path.resolve("public/examples-demo3.html"));
+});
+
+app.get('/example4', function (request, response) {
+    response.sendFile(path.resolve("public/selections.html"));
+});
 //
 // Starts the HTTP server.
 //

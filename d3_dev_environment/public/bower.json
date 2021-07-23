@@ -1,0 +1,19 @@
+{
+  "name": "d3-template-web-page",
+  "authors": [
+      ""
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "^5.16.0"
+  }
+}
