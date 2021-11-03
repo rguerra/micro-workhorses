@@ -1,0 +1,21 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jupyterlab
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: jupy
+  template:
+    metadata:
+      labels:
+        app: jupy
+    spec:
+      containers:
+      - name: jupy
+        image: jupy:latest
+        ports:
+        - containerPort: 8888
+        imagePullPolicy: Never

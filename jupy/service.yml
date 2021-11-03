@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jupy-service
+spec:
+  selector:
+    app: jupy
+  type: LoadBalancer 
+  ports:
+    - protocol: TCP
+      port: 8888
+      targetPort: 8888
