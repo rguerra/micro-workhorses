@@ -3,18 +3,16 @@ version: '3'
 services: 
 
   
-  d3_dev_environment:
-    image: d3_dev_environment
+  jupy:
+    image: jupy
     build: 
-      context: ./d3_dev_environment
+      context: ./jupy
       dockerfile: Dockerfile-dev
-    container_name: d3_dev_environment
+    container_name: jupy
     ports:
-     - "3003:80"
-    volumes:
-        - /tmp/history/npm-cache:/root/.npm:z
-        - ./d3_dev_environment:/usr/src/app:z
+     - "8885:8888"
     environment:
-      - PORT=80
-      - NODE_ENV=development
-    restart: "no"
+      - JUPYTER_ENABLE_LAB=yes
+    volumes:
+      - ../jupy:/home/jovyan/work:z
+    restart: 'no'
