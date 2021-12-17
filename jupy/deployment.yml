@@ -17,5 +17,5 @@ spec:
       - name: jupy
         image: jupy:latest
         ports:
-        - containerPort: 8888
+        - containerPort: 8885
         imagePullPolicy: Never

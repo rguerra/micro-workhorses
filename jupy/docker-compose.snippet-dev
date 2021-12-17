@@ -6,7 +6,7 @@
       dockerfile: Dockerfile-dev
     container_name: jupy
     ports:
-     - "8885:8888"
+     - "8885:8885"
     environment:
       - JUPYTER_ENABLE_LAB=yes
     volumes:
