@@ -3,10 +3,10 @@
     image: jupy
     build: 
       context: ./jupy
-      dockerfile: Dockerfile-dev
+      dockerfile: Dockerfile
     container_name: jupy
     ports:
-     - "8885:8885"
+     - "8888:8888"
     environment:
       - JUPYTER_ENABLE_LAB=yes
     volumes:
